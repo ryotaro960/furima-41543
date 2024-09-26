@@ -1,24 +1,101 @@
-# README
+## Users
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column          |Type   |Options    |
+|----------------|-------|-----------|
+|nickname        |string |null: false|
+|email           |text   |null: false, unique: true|
+|password        |string |null: false|
+|family_name_full|string |null: false|
+|first_name_full |string |null: false|
+|family_name_kana|string |null: false|
+|first_name_kana |string |null: false|
+|birth_year      |integer|null: false|
+|birth_month     |integer|null: false|
+|birth_day       |integer|null: false|
 
-Things you may want to cover:
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :trade_records
+- has_many :comments
+- has_many :favorites
 
-* System dependencies
 
-* Configuration
+## Items
 
-* Database creation
+|Column           |Type   |Options    |
+|-----------------|-------|-----------|
+|user_id          |integer|foreign_key: true|
+|item_image       |text   |null: false|
+|item_name        |string |null: false|
+|explanation      |text   |null: false|
+|category         |string |null: false|
+|status           |string |null: false|
+|payer            |string |null: false|
+|seller_prefecture|string |null: false|
+|waiting          |string |null: false|
 
-* Database initialization
 
-* How to run the test suite
+### Association
+- belongs_to :user
+- has_one :trade_record
+- has_many :comments
+- has_many :favorites
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Trade_records
 
-* ...
+|Column |Type   |Options          |
+|-------|-------|-----------------|
+|item_id|integer|foreign_key: true|
+|user_id|integer|foreign_key: true|
+
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :sending_address
+
+
+## Sending_address
+
+|Column            |Type   |Options    |
+|------------------|-------|-----------|
+|post_code         |string |null: false|
+|sending_prefecture|string |null: false|
+|sending_city      |string |null: false|
+|sending_banchi    |string |null: false|
+|sending_building  |string |           |
+|sending_phone     |integer|null: false|
+
+
+### Association
+- belongs_to :trade_record
+
+
+## Comments
+
+|Column |Type   |Options          |
+|-------|-------|-----------------|
+|user_id|integer|foreign_key: true|
+|item_id|integer|foreign_key: true|
+|content|text   |null: false      |
+
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+## Favorites
+
+|Column  |Type   |Options          |
+|--------|-------|-----------------|
+|user_id |integer|foreign_key: true|
+|item_id |integer|foreign_key: true|
+|okiniiri|boolean|                 |
+
+
+### Association
+- belongs_to :user
+- belongs_to :item
