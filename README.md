@@ -15,8 +15,6 @@
 ### Association
 - has_many :items, dependent: :destroy
 - has_many :trade_records, dependent: :destroy
-- has_many :comments, dependent: :destroy
-- has_many :favorites, dependent: :destroy
 
 
 ## items
@@ -37,8 +35,7 @@
 ### Association
 - belongs_to :user
 - has_one :trade_record, dependent: :destroy
-- has_many :comments, dependent: :destroy
-- has_many :favorites, dependent: :destroy
+
 
 extend ActiveHash::Associations::ActiveRecordExtensions
 - belongs_to :category
@@ -80,31 +77,3 @@ extend ActiveHash::Associations::ActiveRecordExtensions
 
 extend ActiveHash::Associations::ActiveRecordExtensions
 - belongs_to :prefecture
-
-
-## comments
-
-|Column |Type      |Options          |
-|-------|----------|-----------------|
-|user   |references|foreign_key: true|
-|item   |references|foreign_key: true|
-|content|text      |null: false      |
-
-
-### Association
-- belongs_to :user
-- belongs_to :item
-
-
-## favorites
-
-|Column  |Type      |Options          |
-|--------|----------|-----------------|
-|user    |references|foreign_key: true|
-|item    |references|foreign_key: true|
-|okiniiri|boolean   |                 |
-
-
-### Association
-- belongs_to :user
-- belongs_to :item
