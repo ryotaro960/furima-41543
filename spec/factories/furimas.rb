@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :furima do
 
-    item_name {Faker::Config.random}
+    item_name {Faker::Team.name}
     explanation{Faker::Lorem.sentence}
     category_id{Faker::Number.between(from: 2, to: 11)}
     status_id {Faker::Number.between(from: 2, to: 7)}
