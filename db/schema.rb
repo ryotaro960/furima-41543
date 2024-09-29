@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_27_075936) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_29_020231) do
+  create_table "furimas", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "item_name", null: false
+    t.text "explanation", null: false
+    t.integer "category_id", null: false
+    t.integer "status_id", null: false
+    t.integer "payer_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "waiting_id", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_furimas_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -29,4 +44,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_27_075936) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "furimas", "users"
 end

@@ -17,7 +17,7 @@
 - has_many :trade_records
 
 
-## items
+## furimas
 
 |Column       |Type      |Options    |
 |-------------|----------|-----------|
