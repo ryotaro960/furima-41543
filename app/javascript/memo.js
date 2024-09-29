@@ -1,4 +1,4 @@
-function post (){
+const price = () => {
   const form = document.getElementById("item-price")
   form.addEventListener("keyup", () => {
     const commission = Math.round(form.value / 10)
@@ -9,4 +9,5 @@ function post (){
   });
  };
  
- window.addEventListener('turbo:load', post);
+ window.addEventListener('turbo:load', price);
+ window.addEventListener("turbo:render", price);

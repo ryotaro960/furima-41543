@@ -6,7 +6,7 @@ FactoryBot.define do
     category_id{Faker::Number.between(from: 2, to: 11)}
     status_id {Faker::Number.between(from: 2, to: 7)}
     payer_id {Faker::Number.between(from: 2, to: 3)}
-    prefecture_id {Faker::Number.between(from: 2, to: 49)}
+    prefecture_id {Faker::Number.between(from: 2, to: 48)}
     waiting_id {Faker::Number.between(from: 5, to: 4)}
     price {Faker::Number.between(from: 300, to:9999999)}
 

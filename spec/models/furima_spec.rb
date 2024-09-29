@@ -84,6 +84,12 @@ RSpec.describe Furima, type: :model do
         @furima.valid?
         expect(@furima.errors.full_messages).to include("Image can't be blank")
       end
+
+      it "userが空では登録できない" do
+        @furima.user = nil
+        @furima.valid?
+        expect(@furima.errors.full_messages).to include("User must exist")
+      end
     end
   end
 end
