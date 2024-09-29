@@ -3,14 +3,20 @@ class Furima < ApplicationRecord
   validates :user, presence: true
   validates :item_name, presence: true
   validates :exolanation, presence: true
-  validates :category_id, presence: true
-  validates :status_id, presence: true
-  validates :payer_id, presence: true
-  validates :prefecture_id, presence: true
+  validates :category_id, numericality: { other_than: 1, message: "can't be blank"} 
+  validates :status_id, numericality: { other_than: 1, message: "can't be blank"} 
+  validates :payer_id, numericality: { other_than: 1, message: "can't be blank"} 
+  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank"} 
   validates :waiting_id, presence: true
   validates :price, presence: true
 
   belongs_to :user
   # has_one :trade_record
 
+  extend ctiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :status
+  belongs_to :payer
+  belongs_to :prefecture
+  belongs_to :waiting
 end

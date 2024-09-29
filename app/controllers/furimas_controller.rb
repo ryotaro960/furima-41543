@@ -4,7 +4,7 @@ class FurimasController < ApplicationController
   end
 
   def new
-    @furimas = Furima.new
+    @furima = Furima.new
   end
 
   def create
