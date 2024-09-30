@@ -17,7 +17,7 @@
 - has_many :trade_records
 
 
-## items
+## furimas
 
 |Column       |Type      |Options    |
 |-------------|----------|-----------|
@@ -37,7 +37,7 @@
 - has_one :trade_record
 
 
-extend ActiveHash::Associations::ActiveRecordExtensions
+extend ctiveHash::Associations::ActiveRecordExtensions
 - belongs_to :category
 - belongs_to :status
 - belongs_to :payer
