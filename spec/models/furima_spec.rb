@@ -67,6 +67,12 @@ RSpec.describe Furima, type: :model do
         expect(@furima.errors.full_messages).to include("Price is not a number")
       end
 
+      it "priceが小数では登録できない" do
+        @furima.price = '10000.55'
+        @furima.valid?
+        expect(@furima.errors.full_messages).to include("Price must be an integer")
+      end
+
       it "priceが300未満では登録できない" do
         @furima.price = '280'
         @furima.valid?

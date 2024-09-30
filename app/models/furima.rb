@@ -7,7 +7,7 @@ class Furima < ApplicationRecord
   validates :payer_id, numericality: { other_than: 1, message: "can't be blank"} 
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank"} 
   validates :waiting_id, numericality: { other_than: 1, message: "can't be blank"} 
-  validates :price, presence: true, numericality: { in: 300..9999999 }
+  validates :price, presence: true, numericality: { only_integer: true, in: 300..9999999 }
   validates :image, presence: true
   
   belongs_to :user
