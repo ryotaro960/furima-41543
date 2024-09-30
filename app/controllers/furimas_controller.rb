@@ -1,7 +1,5 @@
 class FurimasController < ApplicationController
   
-  before_action :move_to_index, except: :index
-
   def index
   end
 
@@ -20,12 +18,6 @@ class FurimasController < ApplicationController
 
   private
 
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
-  end
-  
   def furima_params
     params.require(:furima).permit(:item_name, :explanation, :category_id, :status_id, :payer_id, :prefecture_id, :waiting_id, :price, :image).merge(user_id: current_user.id)
   end
