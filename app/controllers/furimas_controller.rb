@@ -1,7 +1,7 @@
 class FurimasController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_furima, only: [:show, :edit, :update]
-  before_action :move_to_index, only: [:edit]
+  before_action :set_furima, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :destroy]
 
   def index
     @furimas = Furima.includes(:user).order("created_at DESC")
@@ -24,6 +24,7 @@ class FurimasController < ApplicationController
   end
   
   def edit
+    
   end
 
   def update
@@ -33,6 +34,11 @@ class FurimasController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @furima.destroy
+    redirect_to root_path
   end
 
   private
