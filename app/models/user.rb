@@ -13,5 +13,5 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
 
   has_many :furimas
-  # has_many :trade_records
+  has_many :trade_records
 end

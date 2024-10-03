@@ -37,7 +37,7 @@
 - has_one :trade_record
 
 
-extend ctiveHash::Associations::ActiveRecordExtensions
+extend ActiveHash::Associations::ActiveRecordExtensions
 - belongs_to :category
 - belongs_to :status
 - belongs_to :payer
@@ -49,13 +49,13 @@ extend ctiveHash::Associations::ActiveRecordExtensions
 
 |Column|Type      |Options          |
 |------|----------|-----------------|
-|item  |references|null: false, foreign_key: true|
+|furima|references|null: false, foreign_key: true|
 |user  |references|null: false, foreign_key: true|
 
 
 ### Association
 - belongs_to :user
-- belongs_to :item
+- belongs_to :furima
 - has_one :sending_address
 
 
