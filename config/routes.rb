@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'furimas#index'
 
   resources :furimas do
-    resources :trade_record_sending_address only: [:new, :create]
+    resources :trade_record_sending_address only: [:index, :create]
   end
 
 end

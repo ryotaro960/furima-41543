@@ -1,6 +1,6 @@
 class TradeRecordSendingAddressController < ApplicationController
 
-  def new
+  def index
     @record_address = TradeRecordSendingAddress.new
   end
     
