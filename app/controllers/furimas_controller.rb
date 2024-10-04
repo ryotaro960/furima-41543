@@ -24,7 +24,6 @@ class FurimasController < ApplicationController
   end
   
   def edit
-    
   end
 
   def update

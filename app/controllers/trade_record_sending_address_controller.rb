@@ -1,5 +1,7 @@
 class TradeRecordSendingAddressController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_furima, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
 
   def index
     @trade_record_sending_address = TradeRecordSendingAddress.new
@@ -16,6 +18,12 @@ class TradeRecordSendingAddressController < ApplicationController
   end
   
   private
+
+  def move_to_index
+    if current_user.id == @furima.user.id
+      redirect_to '/furimas'
+    end
+  end
 
   def set_furima
     @furima = Furima.find(params[:furima_id])
