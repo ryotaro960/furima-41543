@@ -8,7 +8,7 @@ class TradeRecordSendingAddress
     validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :sending_city
     validates :sending_banchi
-    validates :sending_phone, numericality: {with:/\A\d{10,11}\z/}
+    validates :sending_phone, numericality: {only_integer: true}, length: { in: 10..11 }
   end
   
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
