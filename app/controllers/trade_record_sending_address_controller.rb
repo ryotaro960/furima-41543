@@ -19,14 +19,14 @@ class TradeRecordSendingAddressController < ApplicationController
   
   private
 
-  def move_to_index
-    if current_user.id == @furima.user.id
-      redirect_to '/furimas'
-    end
-  end
-
   def set_furima
     @furima = Furima.find(params[:furima_id])
+  end
+
+  def move_to_index
+    if current_user.id == @furima.user.id || TradeRecord.where(furima_id: @furima.id) != []
+      redirect_to '/furimas'
+    end
   end
 
   def trade_record_params

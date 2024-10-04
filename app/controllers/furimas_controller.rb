@@ -51,7 +51,7 @@ class FurimasController < ApplicationController
   end
 
   def move_to_index
-    unless current_user.id == @furima.user.id
+    if current_user.id != @furima.user.id || TradeRecord.where(furima_id: @furima.id) != []
       redirect_to action: :index
     end
   end
