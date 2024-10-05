@@ -8,7 +8,7 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @furima.image ,class:"item-box-img" %>
-      <%= render partial: 'shared/sold_out', locals: { furima: @furima.id } %>
+      <%= render partial: 'shared/sold_out', locals: { furima: @furima } %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -20,7 +20,7 @@
     </div>
 
     <% if user_signed_in? %>
-      <% if TradeRecord.where(furima_id: @furima.id) == [] %>
+      <% if @furima.trade_record == nil %>
         <% if current_user.id == @furima.user.id%>
           <%= link_to "商品の編集", edit_furima_path(@furima.id), method: :get, class: "item-red-btn" %>
           <p class="or-text">or</p>

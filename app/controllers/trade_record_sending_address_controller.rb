@@ -27,7 +27,7 @@ class TradeRecordSendingAddressController < ApplicationController
   end
 
   def move_to_index
-    if current_user.id == @furima.user.id || TradeRecord.where(furima_id: @furima.id) != []
+    if current_user.id == @furima.user.id || @furima.trade_record != nil
       redirect_to '/furimas'
     end
   end

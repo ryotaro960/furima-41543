@@ -133,7 +133,7 @@
             <%= link_to furima_path(item.id) do %>
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
-              <%= render partial: 'shared/sold_out', locals: { furima: item.id } %>
+              <%= render partial: 'shared/sold_out', locals: { furima: item } %>
             </div>
             <div class='item-info'>
               <h3 class='item-name'>

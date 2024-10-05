@@ -15,7 +15,7 @@ RSpec.describe TradeRecordSendingAddress, type: :model do
       end
 
       it "sending_buildingが存在しなくても購入できる" do
-        @order.sending_building
+        @order.sending_building = ""
         expect(@order).to be_valid
       end
     end
