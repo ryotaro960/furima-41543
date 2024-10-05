@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_29_062537) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_02_091151) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -54,6 +54,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_29_062537) do
     t.index ["user_id"], name: "index_furimas_on_user_id"
   end
 
+  create_table "sending_addresses", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "trade_record_id", null: false
+    t.string "post_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "sending_city", null: false
+    t.string "sending_banchi", null: false
+    t.string "sending_building"
+    t.string "sending_phone", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trade_record_id"], name: "index_sending_addresses_on_trade_record_id"
+  end
+
+  create_table "trade_records", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "furima_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["furima_id"], name: "index_trade_records_on_furima_id"
+    t.index ["user_id"], name: "index_trade_records_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -75,4 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_29_062537) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "furimas", "users"
+  add_foreign_key "sending_addresses", "trade_records"
+  add_foreign_key "trade_records", "furimas"
+  add_foreign_key "trade_records", "users"
 end
