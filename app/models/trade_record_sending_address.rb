@@ -1,6 +1,6 @@
 class TradeRecordSendingAddress
   include ActiveModel::Model
-  attr_accessor :furima_id, :user_id, :trade_record, :post_code, :prefecture_id, :sending_city, :sending_banchi, :sending_building, :sending_phone
+  attr_accessor :furima_id, :user_id, :trade_record, :post_code, :prefecture_id, :sending_city, :sending_banchi, :sending_building, :sending_phone, :token
   
   with_options presence: true do
     validates :furima_id
@@ -9,6 +9,7 @@ class TradeRecordSendingAddress
     validates :sending_city
     validates :sending_banchi
     validates :sending_phone, numericality: {only_integer: true}, length: { in: 10..11 }
+    validates :token
   end
   
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}

@@ -10,6 +10,7 @@ FactoryBot.define do
     sending_banchi{Faker::Address.street_address}
     sending_building{Faker::Company.name}
     sending_phone{Faker::Number.leading_zero_number(digits: 11)}
-
+    token {"tok_abcdefghijk00000000000000000"}
+    
   end
 end

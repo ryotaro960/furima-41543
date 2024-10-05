@@ -10,7 +10,7 @@ RSpec.describe TradeRecordSendingAddress, type: :model do
   
   describe '購入手続き' do
     context '購入できる場合' do
-      it "post_code, prefecture_id, sending_city, sending_banchi, sending_building, sending_phoneが存在すれば購入できる" do
+      it "post_code, prefecture_id, sending_city, sending_banchi, sending_building, sending_phone, tokenが存在すれば購入できる" do
         expect(@order).to be_valid
       end
 
@@ -91,6 +91,12 @@ RSpec.describe TradeRecordSendingAddress, type: :model do
         @order.furima_id = nil
         @order.valid?
         expect(@order.errors.full_messages).to include("Furima can't be blank")
+      end
+
+      it "tokenが空では登録できないこと" do
+        @order.token = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
