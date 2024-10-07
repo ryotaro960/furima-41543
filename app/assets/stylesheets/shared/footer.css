@@ -50,6 +50,7 @@
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .footer-link {
@@ -65,4 +66,8 @@
 
 .footer>p {
   font-size: 14px;
+}
+
+ul {
+  list-style: none;
 }
